@@ -1,0 +1,8 @@
+  ##playbook for webserver
+---
+-
+  hosts: www
+  name: "install nginx"
+  remote_user: root
+  roles:
+    - nginx

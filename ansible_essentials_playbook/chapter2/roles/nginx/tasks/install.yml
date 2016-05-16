@@ -1,0 +1,7 @@
+---
+  - name: add repository nginx
+    apt_repository: repo="deb http://nginx.org/packages/mainline/ubuntu/ trusty nginx"
+  - name: add apt_key
+    apt_key: url=http://nginx.org/keys/nginx_signing.key state=present
+  - name: install nginx latest version
+    apt: name=nginx state=latest update_cache=yes

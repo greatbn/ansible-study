@@ -1,0 +1,9 @@
+---
+  - name: copy default site configuration
+    file: src=default.conf dest=/etc/nginx/conf.d/default.conf mode=0644
+    notify:
+      - restart nginx
+  - name: delete index default
+    file: dest=/usr/share/nginx/html/index.html state=absent
+  - name: copy index page
+    file: src=index.html dest=/usr/share/nginx/html/index.html state=present

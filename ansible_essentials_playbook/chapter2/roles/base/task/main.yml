@@ -1,0 +1,7 @@
+---
+  - name: create devops group
+    group: name=devops state=present
+  - name: create devops user in devops group
+    user: name=devops commet="DevOps User" group=devops uid=2001
+  - name: install htop package
+    apt: name=htop state=latest update_cache=yes

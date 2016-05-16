@@ -77,3 +77,8 @@ eg: `ansible www -m service -a "name=nginx state=restarted"`
 - stop service
 
 eg: `ansible www -m service -a "name=nginx state=stopped"`
+
+
+### gathering fact
+
+eg: `ansible www -m setup`

@@ -1,0 +1,33 @@
+---
+ - hosts: all
+   remote_user: root
+   tasks:
+    - group: name=devops state=present
+    - name: create devop user with admin privillegs
+      user:
+        name: devops
+        comment: "DevOps User"
+        uid: 2001
+        group: devops
+    - name: install htop package
+      apt:
+        name: htop
+        state: present
+        update_cache: yes
+ - hosts: www
+   user: root
+   tasks:
+    - name: add nginx repository
+      apt_repository:
+        repo: 'deb http://nginx.org/packages/mainline/ubuntu/ trusty nginx'
+    - name: add apt key
+      apt_key: url=http://nginx.org/keys/nginx_signing.key state=present
+    - name: install nginx web server latest version
+      apt:
+        name: nginx
+        state: latest
+        update_cache: yes
+    - name: start nginx service
+      service:
+        name: nginx
+        state: started
